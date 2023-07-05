@@ -23,9 +23,10 @@ else:
   tab1, tab2 = st.tabs(['多路径图','多路径数据表'])
   with tab1:
     st.write(f"卫星{prn}多路径时序图")
-    ax = mutipath[prn].plot(y=["MP1","MP2"])
-    fig_html = mpld3.fig_to_html(ax.get_figure())
-    components.html(fig_html, height=600)
+    with st.spinner("加载中，请稍候..."):
+      ax = mutipath[prn].plot(y=["MP1","MP2"])
+      fig_html = mpld3.fig_to_html(ax.get_figure())
+      components.html(fig_html, height=600)
   with tab2:
     MP1 = np.array(mutipath[prn].loc[:,'MP1'])
     MP1 = np.sqrt(np.mean(np.square(MP1)))

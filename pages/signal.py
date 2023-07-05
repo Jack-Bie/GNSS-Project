@@ -22,19 +22,22 @@ else:
   tab1, tab2, tab3, tab4 = st.tabs(fre[sys]+['数据表'])
   with tab1:
     st.write(f"卫星{prn}的{fre[sys][0]}信噪比")
-    ax = sgn[prn].plot(y=fre[sys][0])
-    fig_html = mpld3.fig_to_html(ax.get_figure())
-    components.html(fig_html, height=600)
+    with st.spinner("加载中，请稍候..."):
+      ax = sgn[prn].plot(y=fre[sys][0])
+      fig_html = mpld3.fig_to_html(ax.get_figure())
+      components.html(fig_html, height=600)
   with tab2:
     st.write(f"卫星{prn}的{fre[sys][1]}信噪比")
-    ax = sgn[prn].plot(y=fre[sys][1])
-    fig_html = mpld3.fig_to_html(ax.get_figure())
-    components.html(fig_html, height=600)
+    with st.spinner("加载中，请稍候..."):
+      ax = sgn[prn].plot(y=fre[sys][1])
+      fig_html = mpld3.fig_to_html(ax.get_figure())
+      components.html(fig_html, height=600)
   with tab3:
     st.write(f"卫星{prn}的{fre[sys][1]}信噪比")
-    ax = sgn[prn].plot(y=fre[sys][2])
-    fig_html = mpld3.fig_to_html(ax.get_figure())
-    components.html(fig_html, height=600)
+    with st.spinner("加载中，请稍候..."):
+      ax = sgn[prn].plot(y=fre[sys][2])
+      fig_html = mpld3.fig_to_html(ax.get_figure())
+      components.html(fig_html, height=600)
   with tab4:
     st.write(f"卫星{prn}的信噪比数据表")
     st.write(sgn[prn])

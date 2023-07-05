@@ -27,11 +27,11 @@ else:
     error = tmp[np.abs(tmp['leap'])>20]
     st.write(error)
     st.write(f"总计有{error.count()[-1]}个粗差历元")
-
-    st.write(f"卫星{prn}的周跳图（含粗差）")
-    ax = leap[sys][prn].plot(y='leap')
-    fig_html = mpld3.fig_to_html(ax.get_figure())
-    components.html(fig_html, height=600)
+    with st.spinner("加载中，请稍候..."):
+      st.write(f"卫星{prn}的周跳图（含粗差）")
+      ax = leap[sys][prn].plot(y='leap')
+      fig_html = mpld3.fig_to_html(ax.get_figure())
+      components.html(fig_html, height=600)
 
   with tab2:
     tmp = leap[sys][prn]
@@ -39,11 +39,11 @@ else:
     st.write(f"卫星{prn}周跳探测的周跳历元表")
     st.write(tmp[np.abs(tmp['leap'])>1])
     st.write(f"总计有{tmp[np.abs(tmp['leap'])>1].count()[-1]}个周跳历元")
-
-    st.write(f"卫星{prn}的周跳图（不含粗差）")
-    ax = tmp.plot(y='leap')
-    fig_html = mpld3.fig_to_html(ax.get_figure())
-    components.html(fig_html, height=600)
+    with st.spinner("加载中，请稍候..."):
+      st.write(f"卫星{prn}的周跳图（不含粗差）")
+      ax = tmp.plot(y='leap')
+      fig_html = mpld3.fig_to_html(ax.get_figure())
+      components.html(fig_html, height=600)
 
   with tab3:
     st.write(f"卫星{prn}周跳探测结果表")
