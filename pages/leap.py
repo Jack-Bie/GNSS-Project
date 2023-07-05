@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 import mpld3
 import streamlit.components.v1 as components
 import gnss as gn
@@ -45,5 +46,9 @@ else:
     components.html(fig_html, height=600)
 
   with tab3:
+    st.write(f"卫星{prn}周跳探测结果表")
+    all = leap[sys][prn].count()[-1]
+    res = pd.DataFrame([[prn,all, all-error.count()[-1],tmp[np.abs(tmp['leap'])>1].count()[-1]]],columns = ['卫星prn号','总历元数','有效历元数','周跳数'])
+    st.write(res)
     st.write(f"卫星{prn}周跳探测的数据表")
     st.write(leap[sys][prn])
